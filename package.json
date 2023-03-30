@@ -1,0 +1,17 @@
+{
+  "name": "pbse-core",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test-login": "node src/test-login.js"
+  },
+  "keywords": [],
+  "author": "OniX",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "puppeteer": "^19.8.0"
+  }
+}
