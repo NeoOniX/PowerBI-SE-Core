@@ -1,7 +1,6 @@
 /*
 Setup :
-- copy this file
-- rename it config.js
+- copy this file to config.js
 - fill in the values
 */
 
@@ -9,6 +8,7 @@ Setup :
  * @type {Config}
  */
 const config = {
+    language: 'english',
     /*
     pbiLogin is the login of the user that will be used to connect to Power BI
     It must be a valid login for the tenant

@@ -2,6 +2,7 @@ const puppeteer = require('puppeteer');
 const Crawler = require('./Crawler');
 const Scraper = require('./Scraper');
 const Uploader = require('./Uploader');
+const lang = require('../lang');
 
 /**
  * @class
@@ -10,13 +11,15 @@ const Uploader = require('./Uploader');
 class Process {
     /**
      * Start a new process
-     * @param {ProcessCfg} config 
+     * @param {ProcessCfg} config
      */
     constructor (config) {
         // Save config
         this.config = config;
+        // Set language
+        this.config.language = lang[config.language];
         // Setup workspaces
-        this.workspaces = config.processes[config.i].map(w => { return {id: w}; });
+        this.workspaces = config.processes[config.i].map(w => { return {id: w} });
     }
 
     async initialize () {
@@ -28,7 +31,7 @@ class Process {
                 height: 810,
                 width: 1440,
             },
-            args: ['--force-device-scale-factor=0.5']
+            args: ['--force-device-scale-factor=0.5'],
         });
 
         this.page = (await this.browser.pages())[0];
@@ -39,20 +42,19 @@ class Process {
             try {
                 await this.page.goto(`https://app.powerbi.com/home?UPN=${this.config.pbiLogin}`);
                 hasLoaded = true;
-            } catch (error) {
-            }
+            } catch (error) { /* empty */ }
         }
 
         try {
             await this.page.waitForSelector('span.pbi-fcl-np.ng-star-inserted', {timeout: 10000});
-        } catch (error) { }
+        } catch (error) { /* empty */ }
     }
 
     async start() {
-        for (let w of this.workspaces) {
-            await Crawler.crawl(this.page, w);
+        for (const w of this.workspaces) {
+            await Crawler.crawl(this.config, this.page, w);
             await Scraper.scrap(this.config, this.page, w);
-            Uploader.upload(this.config.uploadLocation, w);
+            Uploader.upload(this.config, this.config.uploadLocation, w);
         }
     }
 
