@@ -1,5 +1,5 @@
-const fr = require('./fr.js');
-const en = require('./en.js');
+const fr = require("./fr.js");
+const en = require("./en.js");
 
 module.exports = {
     french: fr,

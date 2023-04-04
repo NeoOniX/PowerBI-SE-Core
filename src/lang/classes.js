@@ -12,4 +12,4 @@
  * @property {string} uploaderError
  * @property {string} processDone
  * @property {string} processError
-*/
+ */

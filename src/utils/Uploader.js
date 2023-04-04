@@ -1,7 +1,7 @@
-const chalk = require('chalk');
-const fs = require('fs');
-const regexp = require('../shared/regexp');
-const characters = require('../shared/characters');
+const chalk = require("chalk");
+const fs = require("fs");
+const regexp = require("../shared/regexp");
+const characters = require("../shared/characters");
 const charset = process.platform === "win32" ? characters.win : characters.std;
 
 /**
@@ -24,7 +24,10 @@ class Uploader {
                 if (content.isError) {
                     out_a.push({
                         WorkspaceName: workspace.name,
-                        WorkspaceIcon: workspace.icon !== null ? workspace.icon : "https://content.powerapps.com/resource/powerbiwfe/images/spinner-PBI-logo.6434e0fca135a582c323.svg",
+                        WorkspaceIcon:
+                            workspace.icon !== null
+                                ? workspace.icon
+                                : "https://content.powerapps.com/resource/powerbiwfe/images/spinner-PBI-logo.6434e0fca135a582c323.svg",
                         ContentName: content.name,
                         ContentType: content.type,
                         URL: content.url,
@@ -34,7 +37,10 @@ class Uploader {
                     for (const page of content.pages) {
                         out_c.push({
                             WorkspaceName: workspace.name,
-                            WorkspaceIcon: workspace.icon !== null ? workspace.icon : "https://content.powerapps.com/resource/powerbiwfe/images/spinner-PBI-logo.6434e0fca135a582c323.svg",
+                            WorkspaceIcon:
+                                workspace.icon !== null
+                                    ? workspace.icon
+                                    : "https://content.powerapps.com/resource/powerbiwfe/images/spinner-PBI-logo.6434e0fca135a582c323.svg",
                             ContentName: content.name,
                             ContentType: content.type,
                             PageName: page.name,
@@ -48,12 +54,38 @@ class Uploader {
 
             const date = new Date();
 
-            fs.writeFileSync(`${path}/Exports/pbse_exports_${date.getFullYear()}-${date.getMonth()}-${date.getDate()}_${date.getHours()}h-${date.getMinutes()}m-${date.getSeconds()}s_${workspace.id}.json`, JSON.stringify(out_c, null, 4), 'utf8');
-            fs.writeFileSync(`${path}/Anomalies/pbse_anomalies_${date.getFullYear()}-${date.getMonth()}-${date.getDate()}_${date.getHours()}h-${date.getMinutes()}m-${date.getSeconds()}s_${workspace.id}.json`, JSON.stringify(out_a, null, 4), 'utf8');
+            // For some reason date.getMonth is on [0, ..., 11]
+            // prettier-ignore
+            const n = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}_${date.getHours()}h-${date.getMinutes()}m-${date.getSeconds()}s_${workspace.id}`;
 
-            console.log(chalk.greenBright(pcfg.language.uploaderSuccess.replace(regexp.success, charset.ok).replace(regexp.processID, pcfg.i).replace(regexp.workspaceName, workspace.name)));
+            fs.writeFileSync(
+                `${path}/Exports/pbse_exports_${n}.json`,
+                JSON.stringify(out_c, null, 4),
+                "utf8"
+            );
+            fs.writeFileSync(
+                `${path}/Anomalies/pbse_anomalies_${n}.json`,
+                JSON.stringify(out_a, null, 4),
+                "utf8"
+            );
+
+            console.log(
+                chalk.greenBright(
+                    pcfg.language.uploaderSuccess
+                        .replace(regexp.success, charset.ok)
+                        .replace(regexp.processID, pcfg.i)
+                        .replace(regexp.workspaceName, workspace.name)
+                )
+            );
         } catch (error) {
-            console.log(chalk.redBright(pcfg.language.uploaderError.replace(regexp.error, charset.err).replace(regexp.processID, pcfg.i).replace(regexp.workspaceName, workspace.name)));
+            console.log(
+                chalk.redBright(
+                    pcfg.language.uploaderError
+                        .replace(regexp.error, charset.err)
+                        .replace(regexp.processID, pcfg.i)
+                        .replace(regexp.workspaceName, workspace.name)
+                )
+            );
             console.log(error);
         }
     }
