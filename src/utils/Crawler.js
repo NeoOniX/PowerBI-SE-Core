@@ -1,6 +1,6 @@
-const chalk = require("chalk");
-const regexp = require("../shared/regexp");
+const Logger = require("../utils/Logger");
 const symbols = require("../shared/symbols").getSymbols();
+const regexpf = require("../shared/regexp").format;
 
 /**
  * @class
@@ -98,24 +98,21 @@ class Crawler {
                 await listRows();
             }
 
-            console.log(
-                chalk.greenBright(
-                    pcfg.language.crawlSuccess
-                        .replace(regexp.success, symbols.ok)
-                        .replace(regexp.processID, pcfg.i)
-                        .replace(regexp.workspaceName, workspace.name)
-                )
+            Logger.log(
+                regexpf(pcfg.language.crawlSuccess, {
+                    success: symbols.ok,
+                    processID: pcfg.i,
+                    workspaceName: workspace.name,
+                })
             );
         } catch (error) {
-            console.log(
-                chalk.greenBright(
-                    pcfg.language.crawlError
-                        .replace(regexp.error, symbols.err)
-                        .replace(regexp.processID, pcfg.i)
-                        .replace(regexp.workspaceName, workspace.name)
-                )
+            Logger.error(
+                regexpf(pcfg.language.crawlError, {
+                    error: symbols.err,
+                    processID: pcfg.i,
+                    workspaceName: workspace.name,
+                })
             );
-            console.log(error);
         }
     }
 }

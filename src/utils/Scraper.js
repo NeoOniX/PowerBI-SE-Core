@@ -1,6 +1,6 @@
-const chalk = require("chalk");
-const regexp = require("../shared/regexp");
+const Logger = require("../utils/Logger");
 const symbols = require("../shared/symbols").getSymbols();
+const regexpf = require("../shared/regexp").format;
 
 const re = /[^a-zA-Z0-9À-ÿ]/gi;
 
@@ -112,45 +112,43 @@ class Scraper {
                         }
                     }
                 } catch (error) {
-                    console.log(error);
                     c.isError = true;
                     // Get error message
                     const errorReasonElem = await page.$("h4.mat-dialog-title");
                     c.errorReason = errorReasonElem
                         ? await (await errorReasonElem.getProperty("textContent")).jsonValue()
                         : "Timed out";
-                    console.log(
-                        chalk.redBright(
-                            config.language.scrapError
-                                .replace(regexp.error, symbols.err)
-                                .replace(regexp.processID, config.i)
-                                .replace(regexp.workspaceName, workspace.name)
-                                .replace(regexp.contentName, c.name)
-                        )
+
+                    Logger.error(
+                        regexpf(config.language.scrapError, {
+                            error: symbols.err,
+                            processID: config.i,
+                            workspaceName: workspace.name,
+                            contentName: c.name,
+                        })
                     );
-                    console.log(c.errorReason);
+                    Logger.error(c.errorReason);
+                    continue;
                 }
 
-                console.log(
-                    chalk.greenBright(
-                        config.language.scrapSuccess
-                            .replace(regexp.success, symbols.ok)
-                            .replace(regexp.processID, config.i)
-                            .replace(regexp.workspaceName, workspace.name)
-                            .replace(regexp.contentName, c.name)
-                    )
+                Logger.log(
+                    regexpf(config.language.scrapError, {
+                        success: symbols.ok,
+                        processID: config.i,
+                        workspaceName: workspace.name,
+                        contentName: c.name,
+                    })
                 );
             } catch (error) {
-                console.log(
-                    chalk.redBright(
-                        config.language.scrapError
-                            .replace(regexp.error, symbols.err)
-                            .replace(regexp.processID, config.i)
-                            .replace(regexp.workspaceName, workspace.name)
-                            .replace(regexp.contentName, c.name)
-                    )
+                Logger.error(
+                    regexpf(config.language.scrapError, {
+                        error: symbols.err,
+                        processID: config.i,
+                        workspaceName: workspace.name,
+                        contentName: c.name,
+                    })
                 );
-                console.log(error);
+                Logger.error(error);
             }
         }
     }

@@ -1,13 +1,13 @@
 const puppeteer = require("puppeteer");
-const chalk = require("chalk");
 
 const lang = require("./lang");
-const regexp = require("./shared/regexp");
 const config = require("../config");
 
-const log = console.log;
 const symbols = require("./shared/symbols").getSymbols();
 const l = lang[config.language];
+
+const regexpf = require("./shared/regexp").format;
+const log = require("./utils/Logger").log;
 
 (async () => {
     const browser = await puppeteer.launch({
@@ -23,9 +23,9 @@ const l = lang[config.language];
     try {
         await page.goto(`https://app.powerbi.com/home?UPN=${config.pbiLogin}`);
         await page.waitForSelector("span.pbi-fcl-np.ng-star-inserted", { timeout: 10000 });
-        log(chalk.greenBright(l.loginSuccess.replace(regexp.success, symbols.ok)));
+        log(regexpf(l.loginSuccess, { success: symbols.ok }));
     } catch (error) {
-        log(chalk.redBright(l.loginFailed.replace(regexp.error, symbols.err)));
+        log(regexpf(l.loginFailed, { error: symbols.err }));
     } finally {
         await browser.close();
     }

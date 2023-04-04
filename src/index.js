@@ -1,12 +1,13 @@
 const { Worker } = require("worker_threads");
 const config = require("../config");
+const Logger = require("./utils/Logger");
 
 config.processes.forEach((p, i) => {
     const worker = new Worker("./src/thread.js", { workerData: { i, ...config } });
     worker.on("message", data => {
-        console.log(data);
+        Logger.log(data);
     });
     worker.on("error", err => {
-        console.log(err);
+        Logger.error(err);
     });
 });

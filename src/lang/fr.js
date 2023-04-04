@@ -6,14 +6,14 @@ const fr = {
     dashboard: "Tableau de bord",
     loginSuccess: "{success} Login valide, connexion réussie !",
     loginFailed: "{error} Login invalide, échec de la connexion.",
-    crawlSuccess: "{process-id} > {success} Contenu de {workspace-name} listé !",
-    crawlError: "{process-id} > {error} Erreur de crawling sur {workspace-name}",
-    scrapSuccess: "{process-id} > {success} {content-name} scrapé avec succès !",
-    scrapError: "{process-id} > {error} Erreur de scraping sur {content-name}",
-    uploaderSuccess: "{process-id} > {success} Données de {workspace-name} uploadé avec succès !",
-    uploaderError: "{process-id} > {error} Erreur d'upload des données de {workspace-name}.",
-    processDone: "{process-id} > Terminé !",
-    processError: "{process-id} > Erreur.",
+    crawlSuccess: "{processID} > {success} Contenu de {workspaceName} listé !",
+    crawlError: "{processID} > {error} Erreur de crawling sur {workspaceName}",
+    scrapSuccess: "{processID} > {success} {contentName} scrapé avec succès !",
+    scrapError: "{processID} > {error} Erreur de scraping sur {contentName}",
+    uploaderSuccess: "{processID} > {success} Données de {workspaceName} uploadé avec succès !",
+    uploaderError: "{processID} > {error} Erreur d'upload des données de {workspaceName}.",
+    processDone: "{processID} > Terminé !",
+    processError: "{processID} > Erreur.",
 };
 
 module.exports = fr;

@@ -1,7 +1,7 @@
-const chalk = require("chalk");
 const fs = require("fs");
-const regexp = require("../shared/regexp");
+const Logger = require("../utils/Logger");
 const symbols = require("../shared/symbols").getSymbols();
+const regexpf = require("../shared/regexp").format;
 
 /**
  * @class
@@ -68,24 +68,22 @@ class Uploader {
                 "utf8"
             );
 
-            console.log(
-                chalk.greenBright(
-                    pcfg.language.uploaderSuccess
-                        .replace(regexp.success, symbols.ok)
-                        .replace(regexp.processID, pcfg.i)
-                        .replace(regexp.workspaceName, workspace.name)
-                )
+            Logger.log(
+                regexpf(pcfg.language.uploaderSuccess, {
+                    success: symbols.ok,
+                    processID: pcfg.i,
+                    workspaceName: workspace.name,
+                })
             );
         } catch (error) {
-            console.log(
-                chalk.redBright(
-                    pcfg.language.uploaderError
-                        .replace(regexp.error, symbols.err)
-                        .replace(regexp.processID, pcfg.i)
-                        .replace(regexp.workspaceName, workspace.name)
-                )
+            Logger.error(
+                regexpf(pcfg.language.uploaderError, {
+                    error: symbols.err,
+                    processID: pcfg.i,
+                    workspaceName: workspace.name,
+                })
             );
-            console.log(error);
+            Logger.error(error);
         }
     }
 }
