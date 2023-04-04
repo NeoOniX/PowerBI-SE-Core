@@ -12,13 +12,17 @@ const Process = require("./utils/Process");
 const p = new Process(workerData);
 
 (async () => {
-    await p.initialize();
+    try {
+        await p.initialize();
 
-    await p.start();
+        await p.start();
 
-    await p.close();
+        await p.close();
 
-    parentPort.postMessage(
-        regexpf(l.processDone, { success: symbols.ok, processID: workerData.i })
-    );
+        parentPort.postMessage(
+            regexpf(l.processDone, { success: symbols.ok, processID: workerData.i })
+        );
+    } catch (error) {
+        throw new Error(regexpf(l.processError, { error: symbols.err, processID: workerData.i }));
+    }
 })();

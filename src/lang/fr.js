@@ -12,8 +12,8 @@ const fr = {
     scrapError: "{processID} > {error} Erreur de scraping sur {contentName}",
     uploaderSuccess: "{processID} > {success} Données de {workspaceName} uploadé avec succès !",
     uploaderError: "{processID} > {error} Erreur d'upload des données de {workspaceName}.",
-    processDone: "{processID} > Terminé !",
-    processError: "{processID} > Erreur.",
+    processDone: "{processID} > {success} Terminé !",
+    processError: "{processID} > {error} Erreur.",
 };
 
 module.exports = fr;

@@ -132,7 +132,7 @@ class Scraper {
                 }
 
                 Logger.log(
-                    regexpf(config.language.scrapError, {
+                    regexpf(config.language.scrapSuccess, {
                         success: symbols.ok,
                         processID: config.i,
                         workspaceName: workspace.name,
