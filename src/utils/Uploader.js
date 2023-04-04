@@ -1,8 +1,7 @@
 const chalk = require("chalk");
 const fs = require("fs");
 const regexp = require("../shared/regexp");
-const characters = require("../shared/characters");
-const charset = process.platform === "win32" ? characters.win : characters.std;
+const symbols = require("../shared/symbols").getSymbols();
 
 /**
  * @class
@@ -72,7 +71,7 @@ class Uploader {
             console.log(
                 chalk.greenBright(
                     pcfg.language.uploaderSuccess
-                        .replace(regexp.success, charset.ok)
+                        .replace(regexp.success, symbols.ok)
                         .replace(regexp.processID, pcfg.i)
                         .replace(regexp.workspaceName, workspace.name)
                 )
@@ -81,7 +80,7 @@ class Uploader {
             console.log(
                 chalk.redBright(
                     pcfg.language.uploaderError
-                        .replace(regexp.error, charset.err)
+                        .replace(regexp.error, symbols.err)
                         .replace(regexp.processID, pcfg.i)
                         .replace(regexp.workspaceName, workspace.name)
                 )

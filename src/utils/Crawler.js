@@ -1,7 +1,6 @@
 const chalk = require("chalk");
 const regexp = require("../shared/regexp");
-const characters = require("../shared/characters");
-const charset = process.platform === "win32" ? characters.win : characters.std;
+const symbols = require("../shared/symbols").getSymbols();
 
 /**
  * @class
@@ -102,7 +101,7 @@ class Crawler {
             console.log(
                 chalk.greenBright(
                     pcfg.language.crawlSuccess
-                        .replace(regexp.success, charset.ok)
+                        .replace(regexp.success, symbols.ok)
                         .replace(regexp.processID, pcfg.i)
                         .replace(regexp.workspaceName, workspace.name)
                 )
@@ -111,7 +110,7 @@ class Crawler {
             console.log(
                 chalk.greenBright(
                     pcfg.language.crawlError
-                        .replace(regexp.error, charset.err)
+                        .replace(regexp.error, symbols.err)
                         .replace(regexp.processID, pcfg.i)
                         .replace(regexp.workspaceName, workspace.name)
                 )

@@ -3,8 +3,7 @@ const { workerData, parentPort } = require("worker_threads");
 const config = require("../config");
 const regexp = require("./shared/regexp");
 
-const characters = require("./shared/characters");
-const charset = process.platform === "win32" ? characters.win : characters.std;
+const symbols = require("./shared/symbols").getSymbols();
 
 const lang = require("./lang");
 const l = lang[config.language];
@@ -25,7 +24,7 @@ const p = new Process(workerData);
     parentPort.postMessage(
         chalk.greenBright(
             l.processDone
-                .replace(regexp.success, charset.ok)
+                .replace(regexp.success, symbols.ok)
                 .replace(regexp.processID, workerData.i)
         )
     );

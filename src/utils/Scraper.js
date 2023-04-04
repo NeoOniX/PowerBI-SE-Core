@@ -1,7 +1,6 @@
 const chalk = require("chalk");
 const regexp = require("../shared/regexp");
-const characters = require("../shared/characters");
-const charset = process.platform === "win32" ? characters.win : characters.std;
+const symbols = require("../shared/symbols").getSymbols();
 
 const re = /[^a-zA-Z0-9À-ÿ]/gi;
 
@@ -123,7 +122,7 @@ class Scraper {
                     console.log(
                         chalk.redBright(
                             config.language.scrapError
-                                .replace(regexp.error, charset.err)
+                                .replace(regexp.error, symbols.err)
                                 .replace(regexp.processID, config.i)
                                 .replace(regexp.workspaceName, workspace.name)
                                 .replace(regexp.contentName, c.name)
@@ -135,7 +134,7 @@ class Scraper {
                 console.log(
                     chalk.greenBright(
                         config.language.scrapSuccess
-                            .replace(regexp.success, charset.ok)
+                            .replace(regexp.success, symbols.ok)
                             .replace(regexp.processID, config.i)
                             .replace(regexp.workspaceName, workspace.name)
                             .replace(regexp.contentName, c.name)
@@ -145,7 +144,7 @@ class Scraper {
                 console.log(
                     chalk.redBright(
                         config.language.scrapError
-                            .replace(regexp.error, charset.err)
+                            .replace(regexp.error, symbols.err)
                             .replace(regexp.processID, config.i)
                             .replace(regexp.workspaceName, workspace.name)
                             .replace(regexp.contentName, c.name)
