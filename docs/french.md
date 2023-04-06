@@ -124,5 +124,5 @@ Fonctionne grâce à :
 
 Fait spécialement pour :
 
--   <img width="25px" src="docs/img/sncf.png"> [SNCF](https://sncf.com/).
+-   <img width="25px" src="docs/img/sncf.png"> [SNCF](https://sncf.com/)
 -   <img width="25px" src="docs/img/pbi.png"> [Power BI](https://powerbi.microsoft.com/)
