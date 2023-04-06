@@ -116,13 +116,13 @@ J'utilise cet outil depuis un moment maintenant, et j'ai trouvé que les conseil
 
 Projet dévelopé par :
 
--   <img width="25px" src="docs/img/onix.png"> [@NeoOniX](https://github.com/NeoOniX)
+-   <img width="25px" src="img/onix.png"> [@NeoOniX](https://github.com/NeoOniX)
 
 Fonctionne grâce à :
 
--   <img width="25px" src="docs/img/node.png"> [Node.js](https://nodejs.org/)
+-   <img width="25px" src="img/node.png"> [Node.js](https://nodejs.org/)
 
 Fait spécialement pour :
 
--   <img width="25px" src="docs/img/sncf.png"> [SNCF](https://sncf.com/)
--   <img width="25px" src="docs/img/pbi.png"> [Power BI](https://powerbi.microsoft.com/)
+-   <img width="25px" src="img/sncf.png"> [SNCF](https://sncf.com/)
+-   <img width="25px" src="img/pbi.png"> [Power BI](https://powerbi.microsoft.com/)
