@@ -125,9 +125,9 @@ Project made by :
 
 Powered by :
 
--   <img width="25px" src="docs/img/nodejs.png"> [Node.js](https://nodejs.org/en/)
+-   <img width="25px" src="docs/img/node.png"> [Node.js](https://nodejs.org/)
 
 Built for :
 
 -   <img width="25px" src="docs/img/sncf.png"> [SNCF](https://sncf.com/).
--   <img width="25px" src="docs/img/powerbi.png"> [Power BI](https://powerbi.microsoft.com/fr-fr/)
+-   <img width="25px" src="docs/img/pbi.png"> [Power BI](https://powerbi.microsoft.com/)
