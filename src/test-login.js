@@ -25,7 +25,7 @@ const Logger = require("./utils/Logger");
         await page.waitForSelector("span.pbi-fcl-np.ng-star-inserted", { timeout: 10000 });
         Logger.log(regexpf(l.loginSuccess, { success: symbols.ok }));
     } catch (error) {
-        Logger.erreur(regexpf(l.loginFailed, { error: symbols.err }));
+        Logger.error(regexpf(l.loginFailed, { error: symbols.err }));
     } finally {
         await browser.close();
     }
