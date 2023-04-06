@@ -3,7 +3,7 @@
 # Power BI Search Engine - Core
 <!-- prettier-ignore-end -->
 
-EN - [Disponible en anglais](/README.md)
+🇺🇸 - [Disponible en anglais](/README.md)
 
 `Power BI Search Engine - Core` est un outil qui permet de parcourir et d'extraire des données des rapports et tableaux de bord Microsoft Power BI.  
 Son objectif est de fournir des données pour construire une application de recherche qui remplace le moteur de recherche par défaut de Power BI, qui est basé uniquement sur le nom du rapport, et non sur son contenu.
