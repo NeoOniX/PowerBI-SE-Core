@@ -8,7 +8,7 @@ Setup :
  * @type {Config}
  */
 const config = {
-    language: 'english',
+    language: "english",
     /*
     pbiLogin is the login of the user that will be used to connect to Power BI
     It must be a valid login for the tenant
@@ -16,26 +16,15 @@ const config = {
     ⚠️ - You need to set the domain name
     📝 - You can test if the login is valid by running the following command in a terminal: `npm run test-login`
     */
-    pbiLogin: `${require('os').userInfo().username}@domain.com`,
+    pbiLogin: `${require("os").userInfo().username}@domain.com`,
     /*
     uploadLocation is a path to a folder where the exports will be saved
     It musts have two subfolders: "Exports" and "Anomalies"
     */
     uploadLocation: "C:\\Existing\\Path\\For\\Exports",
     processes: [
-        [
-            "workspace-id-for-process-1",
-            "workspace-id-for-process-1",
-            "workspace-id-for-process-1",
-        ],
-        [
-            "workspace-id-for-process-2",
-        ],
-        /*
-        [
-            "workspace-id-for-process-3",
-        ]
-        */
+        ["workspace-id-for-process-1", "workspace-id-for-process-1", "workspace-id-for-process-1"],
+        ["workspace-id-for-process-2"],
     ],
     /*
     lookFor is an array of CSS selectors that will be used to find the elements that will be read
@@ -49,8 +38,8 @@ const config = {
         "[role=columnheader].pivotTableCellWrap",
         ".xAxisLabel",
         ".yAxisLabel",
-        ".headerText .headerTitleWrapper .displayText"
+        ".headerText .headerTitleWrapper .displayText",
     ],
-}
+};
 
 module.exports = config;
