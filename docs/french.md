@@ -48,7 +48,7 @@ Il a plusieurs fonctionnalités:
 
 ## Configuration
 
-Here is an example of the `config.js` file:
+Ci-dessous, un exemple de fichier `config.js`:
 
 ```js
 const config = {
