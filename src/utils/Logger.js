@@ -47,7 +47,7 @@ class Logger {
         console.log(
             chalk.yellowBright(
                 // prettier-ignore
-                `In ${Math.floor(dateDiff / 3600)}h ${Math.floor(dateDiff / 60)}m ${(dateDiff % 60).toFixed(0)}s.`
+                `In ${Math.floor(dateDiff / 3600)}h ${Math.floor(dateDiff / 60) % 60}m ${(dateDiff % 60).toFixed(0)}s.`
             )
         );
     };
