@@ -59,10 +59,7 @@ const readPage = async (config, page, content) => {
     // Screenshot
     let s = "";
     try {
-        const sElem =
-            content.type === config.language.dashboard
-                ? await page.$(".dashboard")
-                : await page.$(".displayAreaViewport");
+        const sElem = await page.$("#content[role=main]");
         s = await sElem.screenshot({ type: "jpeg", encoding: "base64", quality: 10 });
     } catch (error) {
         /* empty */
