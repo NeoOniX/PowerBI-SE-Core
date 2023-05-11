@@ -19,9 +19,7 @@ class Process {
         // Set language
         this.config.language = lang[config.language];
         // Setup workspaces
-        this.workspaces = config.processes[config.i].map(w => {
-            return { id: w };
-        });
+        this.workspaces = config.processes[config.i];
     }
 
     async initialize() {

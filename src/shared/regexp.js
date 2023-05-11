@@ -3,19 +3,33 @@
  * @property {string|undefined} success Success symbol or text
  * @property {string|undefined} error Error symbol or text
  * @property {string|undefined} processID Process ID
- * @property {string|undefined} contentName Content name
+ * @property {string|undefined} workspaceId Workspace id
  * @property {string|undefined} workspaceName Workspace name
- *
+ * @property {string|undefined} contentName Content name
+ * @property {string|undefined} date Date
+ * @property {string|undefined} time Time
  */
 
-const keys = ["success", "error", "processID", "workspaceName", "contentName"];
+const keys = [
+    "success",
+    "error",
+    "processID",
+    "workspaceId",
+    "workspaceName",
+    "contentName",
+    "date",
+    "time",
+];
 
 const regexps = {
     success: /(?:{success})/g,
     error: /(?:{error})/g,
     processID: /(?:{processID})/g,
+    workspaceId: /(?:{workspaceId})/g,
     workspaceName: /(?:{workspaceName})/g,
     contentName: /(?:{contentName})/g,
+    date: /(?:{date})/g,
+    time: /(?:{time})/g,
 };
 
 class RegExpFormatter {

@@ -51,22 +51,34 @@ class Uploader {
                 }
             }
 
-            const date = new Date();
+            const d = new Date();
+            const date = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
+            const time = `${d.getHours()}h-${d.getMinutes()}m-${d.getSeconds()}s`;
 
-            // For some reason date.getMonth is on [0, ..., 11]
-            // prettier-ignore
-            const n = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}_${date.getHours()}h-${date.getMinutes()}m-${date.getSeconds()}s_${workspace.id}`;
-
-            fs.writeFileSync(
-                `${path}/Exports/pbse_exports_${n}.json`,
-                JSON.stringify(out_c, null, 4),
-                "utf8"
-            );
-            fs.writeFileSync(
-                `${path}/Anomalies/pbse_anomalies_${n}.json`,
-                JSON.stringify(out_a, null, 4),
-                "utf8"
-            );
+            for (const exp of workspace.exports) {
+                fs.writeFileSync(
+                    regexpf(exp, {
+                        workspaceId: workspace.id,
+                        workspaceName: workspace.name,
+                        date,
+                        time,
+                    }),
+                    JSON.stringify(out_c, null, 4),
+                    "utf8"
+                );
+            }
+            for (const ano of workspace.anomalies) {
+                fs.writeFileSync(
+                    regexpf(ano, {
+                        workspaceId: workspace.id,
+                        workspaceName: workspace.name,
+                        date,
+                        time,
+                    }),
+                    JSON.stringify(out_a, null, 4),
+                    "utf8"
+                );
+            }
 
             Logger.log(
                 regexpf(pcfg.language.uploaderSuccess, {

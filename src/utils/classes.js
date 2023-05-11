@@ -1,12 +1,16 @@
 /**
  * @typedef {('french'|'fra'|'fr'|'english'|'eng'|'en')} LanguageCfg
  *
+ * @typedef {Object} WorkspaceCfg
+ * @property {string} id Workspace id
+ * @property {Array<string>} exports Export locations
+ * @property {Array<string>} anomalies Anomalies locations
+ *
  * @typedef {Object} Config
  * @property {LanguageCfg} language Language to use
  * @property {string} pbiLogin PowerBI account login
- * @property {Array<Array<string>>} processes List of processes
+ * @property {Array<Array<WorkspaceCfg>>} processes List of processes
  * @property {Array<string>} lookFor List of CSS selector to read in page
- * @property {string} uploadLocation Folder to upload to
  *
  * @typedef {Object} PCFG
  * @property {number} i Process index
@@ -33,4 +37,6 @@
  * @property {string} name Workspace name
  * @property {string | null} icon Workspace icon URL
  * @property {Array<Content>} contents Workspace contents
+ * @property {Array<string>} exports Export locations
+ * @property {Array<string>} anomalies Anomalies locations
  */
