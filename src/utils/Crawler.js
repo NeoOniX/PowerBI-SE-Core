@@ -101,8 +101,6 @@ class Crawler {
                 await listRows();
             }
 
-            console.log(workspace);
-
             Logger.log(
                 regexpf(pcfg.language.crawlSuccess, {
                     success: symbols.ok,
