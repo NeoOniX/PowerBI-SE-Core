@@ -25,7 +25,7 @@ class Process {
     async initialize() {
         // Create new browser and page
         this.browser = await puppeteer.launch({
-            // headless: false,
+            headless: "new",
             defaultViewport: {
                 height: 810,
                 width: 1440,
